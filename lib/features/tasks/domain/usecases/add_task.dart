@@ -1,6 +1,7 @@
 import 'package:new_task_app/features/tasks/domain/entities/task.dart';
 import 'package:new_task_app/features/tasks/domain/exceptions/task_exceptions.dart';
 import 'package:new_task_app/features/tasks/domain/repositories/task_repository.dart';
+import 'package:new_task_app/features/tasks/domain/rules/task_title_rules.dart';
 
 class AddTask {
   final TaskRepository repository;
@@ -18,8 +19,7 @@ class AddTask {
       DateTime.now().microsecondsSinceEpoch.toString();
 
   Future<Task> call(String title) async {
-    final trimmed = title.trim();
-    if (trimmed.isEmpty) throw const InvalidTaskTitleException();
+    final trimmed = validateTaskTitle(title);
     final task = Task(id: _generateId(), title: trimmed, createdAt: _now());
     await repository.addTask(task);
     return task;
