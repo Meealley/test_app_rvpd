@@ -10,3 +10,12 @@ class TaskNotFoundException implements Exception {
   @override
   String toString() => 'No task found with "$id"';
 }
+
+class TaskTitleTooLongException implements Exception {
+  final int maxLength;
+
+  const TaskTitleTooLongException(this.maxLength);
+
+  @override
+  String toString() => 'Task title cannot be longer than $maxLength characters';
+}

@@ -1,5 +1,4 @@
 import 'package:new_task_app/features/tasks/domain/entities/task.dart';
-import 'package:new_task_app/features/tasks/domain/exceptions/task_exceptions.dart';
 import 'package:new_task_app/features/tasks/domain/repositories/task_repository.dart';
 import 'package:new_task_app/features/tasks/domain/rules/task_title_rules.dart';
 
